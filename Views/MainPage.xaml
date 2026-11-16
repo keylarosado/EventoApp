@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EventoApp.Views.MainPage"
+             Title="Novo evento"
+             BackgroundColor="{StaticResource PageBackground}">
+    <ScrollView>
+        <VerticalStackLayout Padding="22,20,22,30" Spacing="16">
+            <VerticalStackLayout Spacing="5">
+                <Label Text="CADASTRO DE EVENTOS" FontSize="12" FontAttributes="Bold" TextColor="{StaticResource Primary}" />
+                <Label Text="Planeje seu evento" FontSize="28" FontAttributes="Bold" />
+                <Label Text="Preencha as informações para gerar o resumo e calcular o orçamento." FontSize="14" TextColor="{StaticResource TextMuted}" />
+            </VerticalStackLayout>
+
+            <Border BackgroundColor="White" Stroke="#E2EAE6" StrokeThickness="1" Padding="18" StrokeShape="RoundRectangle 18">
+                <VerticalStackLayout Spacing="13">
+                    <Label Text="Informações gerais" FontSize="18" FontAttributes="Bold" />
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Nome do evento" FontSize="13" FontAttributes="Bold" />
+                        <Entry x:Name="NomeEntry" Placeholder="Ex.: Feira de Sustentabilidade" Text="{Binding Nome}" />
+                    </VerticalStackLayout>
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Local do evento" FontSize="13" FontAttributes="Bold" />
+                        <Entry Placeholder="Ex.: Centro Cultural" Text="{Binding Local}" />
+                    </VerticalStackLayout>
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                        <VerticalStackLayout Grid.Column="0" Spacing="5">
+                            <Label Text="Data de início" FontSize="13" FontAttributes="Bold" />
+                            <DatePicker Date="{Binding DataInicio}" Format="dd/MM/yyyy" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1" Spacing="5">
+                            <Label Text="Data de término" FontSize="13" FontAttributes="Bold" />
+                            <DatePicker Date="{Binding DataTermino}" Format="dd/MM/yyyy" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border BackgroundColor="White" Stroke="#E2EAE6" StrokeThickness="1" Padding="18" StrokeShape="RoundRectangle 18">
+                <VerticalStackLayout Spacing="13">
+                    <Label Text="Participantes e orçamento" FontSize="18" FontAttributes="Bold" />
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Número de participantes" FontSize="13" FontAttributes="Bold" />
+                        <Entry Keyboard="Numeric" Placeholder="Ex.: 80" Text="{Binding NumeroParticipantes}" />
+                    </VerticalStackLayout>
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Custo por participante (R$)" FontSize="13" FontAttributes="Bold" />
+                        <Entry Keyboard="Numeric" Placeholder="Ex.: 25,00" Text="{Binding CustoPorParticipanteTexto, Mode=TwoWay}" />
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border BackgroundColor="#E8F1ED" Stroke="#D5E5DD" Padding="16" StrokeShape="RoundRectangle 16">
+                <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto" RowSpacing="5">
+                    <Label Text="Duração prevista" FontSize="13" TextColor="{StaticResource TextMuted}" />
+                    <Label Grid.Row="1" Text="{Binding DuracaoTexto}" FontSize="21" FontAttributes="Bold" TextColor="{StaticResource Primary}" />
+                    <Label Grid.Column="1" Grid.RowSpan="2" Text="◷" FontSize="28" TextColor="{StaticResource Primary}" VerticalOptions="Center" />
+                </Grid>
+            </Border>
+
+            <Button Text="Cadastrar evento  →" Clicked="OnCadastrarClicked" />
+            <Label Text="Os dados serão apresentados em uma tela de resumo." FontSize="12" TextColor="{StaticResource TextMuted}" HorizontalTextAlignment="Center" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

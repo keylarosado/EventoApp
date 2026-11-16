@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EventoApp.Views.ResumoPage"
+             Title="Resumo do evento"
+             BackgroundColor="{StaticResource PageBackground}">
+    <ScrollView>
+        <VerticalStackLayout Padding="22,24,22,30" Spacing="18">
+            <VerticalStackLayout Spacing="5">
+                <Label Text="CADASTRO CONCLUÍDO" FontSize="12" FontAttributes="Bold" TextColor="{StaticResource Primary}" />
+                <Label Text="Resumo do evento" FontSize="28" FontAttributes="Bold" />
+                <Label Text="Confira os dados informados e o orçamento calculado." FontSize="14" TextColor="{StaticResource TextMuted}" />
+            </VerticalStackLayout>
+
+            <Border BackgroundColor="{StaticResource Primary}" Padding="20" StrokeShape="RoundRectangle 20">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="EVENTO" FontSize="11" TextColor="#D7E8E2" FontAttributes="Bold" />
+                    <Label Text="{Binding Nome}" FontSize="23" TextColor="White" FontAttributes="Bold" />
+                    <Label Text="{Binding Local}" FontSize="14" TextColor="#E6F0EC" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border BackgroundColor="White" Stroke="#E2EAE6" Padding="18" StrokeShape="RoundRectangle 18">
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="Detalhes" FontSize="18" FontAttributes="Bold" />
+                    <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto,Auto,Auto" RowSpacing="13">
+                        <Label Text="Data de início" TextColor="{StaticResource TextMuted}" />
+                        <Label Grid.Column="1" Text="{Binding DataInicioFormatada}" FontAttributes="Bold" />
+                        <Label Grid.Row="1" Text="Data de término" TextColor="{StaticResource TextMuted}" />
+                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding DataTerminoFormatada}" FontAttributes="Bold" />
+                        <Label Grid.Row="2" Text="Duração" TextColor="{StaticResource TextMuted}" />
+                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding DuracaoTexto}" FontAttributes="Bold" />
+                        <Label Grid.Row="3" Text="Participantes" TextColor="{StaticResource TextMuted}" />
+                        <Label Grid.Row="3" Grid.Column="1" Text="{Binding NumeroParticipantes}" FontAttributes="Bold" />
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border BackgroundColor="White" Stroke="#E2EAE6" Padding="18" StrokeShape="RoundRectangle 18">
+                <VerticalStackLayout Spacing="13">
+                    <Label Text="Resumo financeiro" FontSize="18" FontAttributes="Bold" />
+                    <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto" RowSpacing="12">
+                        <Label Text="Custo por participante" TextColor="{StaticResource TextMuted}" />
+                        <Label Grid.Column="1" Text="{Binding CustoPorParticipanteFormatado}" FontAttributes="Bold" />
+                        <Label Grid.Row="1" Text="Participantes" TextColor="{StaticResource TextMuted}" />
+                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding NumeroParticipantes}" FontAttributes="Bold" />
+                    </Grid>
+                    <BoxView HeightRequest="1" Color="#E2EAE6" />
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label Text="CUSTO TOTAL" FontSize="12" FontAttributes="Bold" TextColor="{StaticResource Primary}" VerticalOptions="Center" />
+                        <Label Grid.Column="1" Text="{Binding CustoTotalTexto}" FontSize="24" FontAttributes="Bold" TextColor="{StaticResource Primary}" />
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+
+            <Button Text="Voltar ao cadastro" Clicked="OnVoltarClicked" BackgroundColor="#E2ECE7" TextColor="{StaticResource Primary}" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
